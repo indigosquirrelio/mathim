@@ -17,19 +17,41 @@ import Loc._
 class Boot {
   def boot {
     // where to search snippet
-    LiftRules.addToPackages("code")
+    LiftRules.addToPackages("mathim")
 
     // Build SiteMap
     val entries = List(
-      Menu.i("Home") / "index", // the simple way to declare a menu
-
-      // more complex because this menu allows anything in the
-      // /static path to be visible
+      Menu.i("Home") / "index",
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
-	       "Static Content")))
+	       "Static Content")),
+      Menu("Chatroom") / "chatroom" / "index",
+      Menu("Quickie") / "quickie" / "index",
+      Menu("Mail") / "mail" / "index"
+    )
+    
+    val realFolders = List("static", "chatroom", "quickie", "mail")
+    
+    // redirect all "/channelName" to "/chatroom/" except real folders
+    val rewrites = NamedPF[RewriteRequest, RewriteResponse]("Chatrooms") {
+      case RewriteRequest(ParsePath(channelName :: Nil, _, _, _), _, _) 
+        if channelName != "index" && !realFolders.contains(channelName) =>
+          RewriteResponse(
+            "chatroom" :: "index" :: Nil, Map("channelName"->channelName))
+    }
+    
+    LiftRules.statelessRewrite.prepend(rewrites)
 
-    // set the sitemap.  Note if you don't want access control for
-    // each page, just comment this line out.
+    // redirect all "/channelName/" to "/channelName"
+    // redirect all 'real folders' i.e. 'mail' to 'mail/'    
+    LiftRules.statelessDispatchTable.prepend({
+      case Req(folderName :: "index" :: Nil, _,_) 
+        if !realFolders.contains(folderName) => 
+          () => Full(RedirectResponse("/"+folderName))
+      case Req(folderName :: Nil, _,_) 
+        if realFolders.contains(folderName) => 
+          () => Full(RedirectResponse("/"+folderName+"/"))
+    })    
+
     LiftRules.setSiteMap(SiteMap(entries:_*))
 
     //Show the spinny image when an Ajax call starts

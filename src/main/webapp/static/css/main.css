@@ -1,0 +1,69 @@
+div.header {
+    width: 840px;
+    margin: 0 auto;
+    padding: 0 0 10px 0;
+}
+
+div.colcontainer {
+    width: 840px;
+    margin: 0 auto;
+}
+
+div.col1 {
+    text-align: center;
+    float: left;
+    width: 420px;
+}
+
+div.col2 {
+    float: right;
+    width: 420px;
+    text-align: right;
+}
+
+div.footer {
+    position: relative;
+    width: 840px;
+    clear: both;
+    margin: 0.2em auto;
+    text-align: center;
+}
+
+div.translatepitch {
+    margin: 1em 1em;
+    padding: 0.1em;
+    background: #99CCFF;
+}
+
+div.chatExpandScroll {
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #666;
+  
+  margin: 0px;
+  padding: 8px;
+}
+
+div.chatWindow {
+  padding: 0.5em;
+  background-color: #dddddd;
+  border: 1px solid #666666;
+}
+
+#chatLog {
+  background-color: white;
+}
+
+#chatUserlist {
+  width: 100px;
+  background-color: white;
+}
+
+.chatUserlistCell {
+  width: 100px;
+}
+
+.chatTable {
+  border-collapse: collapse;
+  width: 100%;
+}

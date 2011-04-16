@@ -1,0 +1,37 @@
+<lift:surround with="default" at="content">
+
+<table style="width: 100%">
+<tr>
+  <td>
+    <a href="/"><img src="/static/img/logo.png" alt="MathIM" /></a>
+  </td>
+  <td style="text-align: right">
+    TeX enclosed in dollar signs.<br /> 
+    Ex: Hello $\sqrt{2}$ is irrational.<br />
+    To invite a friend, link them to this page.
+  </td>
+</tr>
+</table>
+
+<div class="chatWindow">
+  <b><span id="channelTitle">Loading...</span></b>
+  <table class="chatTable">
+    <tr>
+      <td><div id="chatLog" class="chatExpandScroll" /></td>
+      <td class="chatUserlistCell">
+        <div id="chatUserlist" class="chatExpandScroll" />
+      </td>
+    </tr>
+  </table>
+  <div id="chatInput">
+    <lift:msg id="chatError"/>
+    <div id="chatInputAskName" class="pane" />
+    <div id="chatInputCompose" class="pane" />
+  </div>
+</div>
+
+<lift:Snippets.chatRoom />
+
+</lift:surround>
+
+
