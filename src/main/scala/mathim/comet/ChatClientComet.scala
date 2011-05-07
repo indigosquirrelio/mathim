@@ -30,7 +30,9 @@ class ChatClientComet extends CometActor with Loggable {
   
   override def lifespan = Full(20 seconds)
   
-  ActorPing.schedule(this, KeepAlive, 10000L)
+  def keepAliveInterval = 6000L
+  
+  ActorPing.schedule(this, KeepAlive, keepAliveInterval)
   
   override def localSetup() = {
     server ! Subscribe(this, channelName)
@@ -49,6 +51,7 @@ class ChatClientComet extends CometActor with Loggable {
     case NickAssignment(nick) => {
       nickOpt = Some(nick)
       reRender
+      this.error("chatError", "")
     }
     case ChannelLog(log) => {
       logger.info("ChannelLog received")
@@ -67,7 +70,7 @@ class ChatClientComet extends CometActor with Loggable {
       partialUpdate(jsCall(message))
     }
     case KeepAlive => {
-      ActorPing.schedule(this, KeepAlive, 10000L);
+      ActorPing.schedule(this, KeepAlive, keepAliveInterval);
       partialUpdate(JsCmds.Noop)
     } 
     case x => 

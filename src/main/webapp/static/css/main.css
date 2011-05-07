@@ -40,6 +40,7 @@ div.chatExpandScroll {
   overflow: auto;
   border: 1px solid #666;
   padding: 8px;
+  margin: 0;
 }
 
 div.chatWindow {
@@ -60,7 +61,7 @@ div.chatWindow {
 }
 
 #chatInput {
-  padding-top: 1em;
+  margin-top: 4px;
   clear: both;
 }
 
@@ -80,6 +81,7 @@ p.message {
 
 img.texbar {
   padding: 3px;
+  margin: 0;
   background-color: #eeeeee;
   border:1px solid #cccccc;
   border-top:1px solid #f0f0f0;

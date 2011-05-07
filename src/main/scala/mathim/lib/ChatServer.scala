@@ -14,6 +14,7 @@ import java.io._
 
 import java.util.Date
 import net.liftweb.common.SimpleActor
+import net.liftweb.common.{Box, Full, Loggable}
 
 import collection.immutable.HashMap
 
@@ -23,14 +24,21 @@ class Channel(val name: String) {
   
   var nicks : Vector[String] = Vector.empty
   
+  
+  
   def writeLogFile() = if(!log.isEmpty) {
     val logStrings = log.map(_.toString)
-    val fileName = "%s - %s.log".format(log.head.timestampLong, name)
-    val filePath = "/var/log/mathim/channels/" + fileName
+    val logName = "%s - %s".format(name, log.head.timestampLong)
+    
+    val filePath = "/var/log/mathim/chats.log"
     
     try {
-      val out = new BufferedWriter(new FileWriter(filePath));
+      val out = new BufferedWriter(new FileWriter(filePath, true));
+      out.write("---\n")
+      out.write(logName)
+      out.write("\n\n")
       logStrings.foreach(s => out.write(s + "\n"))
+      out.write("\n")
       out.close();
     } catch {
       case _ => Unit
@@ -38,7 +46,7 @@ class Channel(val name: String) {
   }
 }
 
-object ChatServer extends LiftActor {
+object ChatServer extends LiftActor with Loggable{
   var channels: HashMap[String, Channel] = new HashMap()
   
   def getChannel(channelName: String) = channels.get(channelName) match {
@@ -61,6 +69,8 @@ object ChatServer extends LiftActor {
     case Unsubscribe(listener, channelName, nickOpt) => {
       val chan = getChannel(channelName)
       
+      chan.listeners = chan.listeners - listener
+      
       nickOpt match {
         case Some(nick) if(chan.nicks.contains(nick)) => {
           chan.nicks = chan.nicks.filter(_ != nick)
@@ -72,9 +82,8 @@ object ChatServer extends LiftActor {
         case _ => None
       }
       
-      chan.listeners = chan.listeners - listener
-      
       if(chan.listeners.isEmpty) {
+        logger.debug("Channel " + channelName + " destroyed.")
         chan.writeLogFile()
         channels = channels - channelName
       }
