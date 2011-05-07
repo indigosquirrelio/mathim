@@ -39,8 +39,6 @@ div.chatExpandScroll {
   height: 300px;
   overflow: auto;
   border: 1px solid #666;
-  
-  margin: 0px;
   padding: 8px;
 }
 
@@ -52,11 +50,18 @@ div.chatWindow {
 
 #chatLog {
   background-color: white;
+  margin-right: 120px;
 }
 
 #chatUserlist {
   width: 100px;
   background-color: white;
+  float: right;
+}
+
+#chatInput {
+  padding-top: 1em;
+  clear: both;
 }
 
 .chatUserlistCell {
@@ -66,4 +71,9 @@ div.chatWindow {
 .chatTable {
   border-collapse: collapse;
   width: 100%;
+}
+
+p.message {
+  margin: 0;
+  padding: 0;
 }

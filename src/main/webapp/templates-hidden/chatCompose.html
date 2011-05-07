@@ -1,28 +1,24 @@
-<lift:chatInputForm>
-  <form>
-    <table>
-      <tr>
-        <td colspan="2">
-          Buttons
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <textarea rows="2" cols="50">Input text here</textarea>
-        </td>
-        <td>
-          <input type="button" onclick="javascript:send()" value="Send" />
-        </td>
-      </tr>
-    </table>
-  </form>
-</lift:chatInputForm>
-
-<table style="background-color: #eee">
-  <tr>
-    <td>
-      Preview:<br/>
-      Example
-    </td>
-  </tr>
-</table>
+<form class="composeForm lift:Form.ajax">
+  <table>
+    <tr>
+      <td colspan="2">
+        Buttons
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <lift:composeTextarea>
+          <textarea id="composeTextarea" rows="2" cols="50">Input text here</textarea>
+        </lift:composeTextarea>
+      </td>
+      <td>
+        <input id="composeSubmitBtn" type="submit" value="Send" />
+      </td>
+    </tr>
+  </table>
+  
+  Preview:<br/>
+  <div style="overflow: hidden; width: 100%; background-color: #eee;">
+    &nbsp;&nbsp;&nbsp;<span id="previewArea"></span>
+  </div>
+</form>

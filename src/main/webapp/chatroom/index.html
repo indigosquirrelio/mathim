@@ -1,5 +1,7 @@
 <lift:surround with="default" at="content">
 
+<script id="autoresize" src="/static/js/autoresize.jquery.min.js" type="text/javascript" />
+
 <table style="width: 100%">
 <tr>
   <td>
@@ -14,21 +16,34 @@
 </table>
 
 <div class="chatWindow">
-  <b><span id="channelTitle">Loading...</span></b>
   <table class="chatTable">
     <tr>
-      <td><div id="chatLog" class="chatExpandScroll" /></td>
-      <td class="chatUserlistCell">
-        <div id="chatUserlist" class="chatExpandScroll" />
+      <td>
+        <b><span id="channelName">Loading...</span></b>
+      </td>
+      <td style="text-align: right">
+        <button id="btnTimestamps" class="mButton">
+          <img src="/static/img/icons/time.png" />
+        </button>
+        <button id="btnUserlist" class="mButton">
+          <img src="/static/img/icons/user.png" />
+        </button>
       </td>
     </tr>
   </table>
+  
+  <div id="chatUserlist" class="chatExpandScroll" />
+  <div id="chatLog" class="chatExpandScroll" />
   <div id="chatInput">
     <lift:msg id="chatError"/>
     <div id="chatInputAskName" class="pane" />
     <div id="chatInputCompose" class="pane" />
   </div>
 </div>
+
+<script type="text/javascript">
+  initializeTopButtons();
+</script>
 
 <lift:Snippets.chatRoom />
 

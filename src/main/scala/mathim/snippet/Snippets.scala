@@ -13,7 +13,7 @@ class Snippets {
   def chatRoom(in: NodeSeq) : NodeSeq = S.param("channelName") match {
     case Full(channelName) => {
       val id = Helpers.nextFuncName // unique comet actor per page load
-      <lift:comet type="ChatClientActor" name={ id }>
+      <lift:comet type="ChatClientComet" name={ id }>
         <comet:message />
       </lift:comet>
     }
