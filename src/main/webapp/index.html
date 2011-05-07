@@ -10,9 +10,8 @@
 
     <p>Use <strong>beautifully rendered</strong> LaTeX math in chat.</p>
 
-    <p>Just enter a room name and start chatting.</p>
-    <p>Send your friends the URL after you create a room to invite them.</p>
-    <form id="fm-form" method="post" action="entryform" class="entryform">
+    <p>To invite a friend, link them after you enter a room.</p>
+    <div class="entryform">
       <p>
       <label for="fm-roomname"><b>Chat Room Name:</b></label>
       <input id="fm-roomname" name="fm-roomname" type="text" />
@@ -21,35 +20,20 @@
       <p>
       <input name="Submit" value="Start Chatting!" type="submit" />
       </p>
-    </form>
-    <div class="translatepitch">
-      <p>Good news! <a href="/translate"><b>MathIM Translate</b></a> service launched.</p>
-      <p>Send around equations as links without creating a whole chat room. For quickies.</p>
-
+    </div>
+    <!--
+    <div class="mail">
+      <p><a href="/mail/"><b>MathMail</b></a> - Send math in emails.</p>
+    </div>
+    -->
+    <div class="quickie">
+      <p><a href="/q/"><b>Quickie</b></a> - Quick equation image.</p>
     </div>
   </div>
   <div class="col2">
-    <img src="http://theme.mathim.com/snapshot1.png" border="1" alt="screenshot of MathIM" />
-    <table width="400" border="0">
-      <tr>
-	      <td>
-	        <p><a href="http://www.physicsforums.com/">Physics Forums</a></p>
-        </td>
-        <td>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="8842500" />
-            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-          </form>
-        </td>
-	    </tr>
-	    </table>
+    <img src="/static/img/snapshot.png" border="1" 
+         alt="screenshot of MathIM" class="shadow" />
   </div>
-</div>
-
-<div class="footer">
-<img src="http://theme.mathim.com/email.png" alt="Email addr: t o m m y c l i _AT_ u c l a . e d u"/>
 </div>
 
 </lift:surround>

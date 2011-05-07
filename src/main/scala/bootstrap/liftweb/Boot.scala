@@ -25,11 +25,11 @@ class Boot {
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
 	       "Static Content")),
       Menu("Chatroom") / "chatroom" / "index",
-      Menu("Quickie") / "quickie" / "index",
+      Menu("Quickie") / "q" / "index",
       Menu("Mail") / "mail" / "index"
     )
     
-    val realFolders = List("static", "chatroom", "quickie", "mail")
+    val realFolders = List("static", "chatroom", "q", "mail")
     
     // redirect all "/channelName" to "/chatroom/" except real folders
     val rewrites = NamedPF[RewriteRequest, RewriteResponse]("Chatrooms") {
