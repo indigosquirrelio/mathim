@@ -1,5 +1,5 @@
 // initialize sound
-soundManager.url = '/static/swf/soundmanager2.swf';
+soundManager.url = '/static/swf/';
 soundManager.useFlashBlock = false;
 
 soundManager.onready(function() {
@@ -65,10 +65,8 @@ function initializeTopButtons() {
   $('#btnUserlist').click(function() {
     if(userlistHidden) {
       $('#chatUserlist').show();
-      $('#chatLog').css("margin-right", 120);
     } else {
       $('#chatUserlist').hide();
-      $('#chatLog').css("margin-right", 0);
     }
     userlistHidden = !userlistHidden;
   });
@@ -81,8 +79,10 @@ function initializeChatInput() {
   
   $('#composeTextarea').keydown(function(e) {
     initialTextCleared = true;
-      
-    if(e.which == KeyEvent.DOM_VK_RETURN && !e.shiftKey) {
+    
+    var DOM_VK_RETURN = 13;
+    
+    if(e.which == DOM_VK_RETURN && !e.shiftKey) {
       if($('#composeTextarea').val() != "") {
         $('#composeSubmitBtn').click();
       }
@@ -104,6 +104,6 @@ function initializeChatInput() {
   
   //$('#composeTextarea').focus().select();
   setTimeout("$('#composeTextarea').focus().select();", 50);
-  initTexbar();
+  initTexbar(true);
 }
 

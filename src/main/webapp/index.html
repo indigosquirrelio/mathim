@@ -1,5 +1,7 @@
 <lift:surround with="default" at="content">
 
+<script src="/static/js/mathim-home.js" type="text/javascript"></script>
+
 <div class="header">
 <a href="/"><img src="/static/img/logo.png" alt="MathIM" /></a>
 </div>    
@@ -12,14 +14,16 @@
 
     <p>To invite a friend, link them after you enter a room.</p>
     <div class="entryform">
+      <form id="fm-chat" action="/">
       <p>
       <label for="fm-roomname"><b>Chat Room Name:</b></label>
-      <input id="fm-roomname" name="fm-roomname" type="text" />
+      <input id="fm-roomname" name="fm-roomname" type="text" value="Lobby" />
       </p>
 
       <p>
       <input name="Submit" value="Start Chatting!" type="submit" />
       </p>
+      </form>
     </div>
     <!--
     <div class="mail">
@@ -31,7 +35,7 @@
     </div>
   </div>
   <div class="col2">
-    <img src="/static/img/snapshot.png" border="1" 
+    <img src="/static/img/snapshot.png" style="border: 1px solid black;"
          alt="screenshot of MathIM" class="shadow" />
   </div>
 </div>

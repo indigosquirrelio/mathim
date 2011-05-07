@@ -14,7 +14,7 @@ class Snippets {
     case Full(channelName) => {
       val id = Helpers.nextFuncName // unique comet actor per page load
       <lift:comet type="ChatClientComet" name={ id }>
-        <comet:message />
+        <comet:message></comet:message>
       </lift:comet>
     }
     case _ => S.redirectTo("/") // must have accessed "/chatRoom/"

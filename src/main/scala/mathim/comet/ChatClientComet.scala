@@ -101,10 +101,13 @@ class ChatClientComet extends CometActor with Loggable {
   
   def renderCompose = OnLoad(SetHtml("chatInputCompose", 
     S.runTemplate("templates-hidden" :: "chatCompose" :: Nil, 
-      "composeTextarea" -> SHtml.onSubmit(msg => {
-        logger.debug("Comet sent message " + msg)
-        server ! ChatMessage(channelName, nickOpt.get, msg)
-      })
+      "composetextarea" -> {
+        println("Bound one onSubmit")
+        SHtml.onSubmit(msg => {
+          logger.debug("Comet sent message " + msg)
+          server ! ChatMessage(channelName, nickOpt.get, msg)
+        })
+      }
     ) match {
       case Full(x) => x
       case _ => <p>Problem rendering compose</p>

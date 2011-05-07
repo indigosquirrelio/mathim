@@ -1,7 +1,3 @@
-function initTexbar() {
-  return initTexbar(true);
-}
-
 function initTexbar(dollarSigns) {
   $('img.texbar').hover(
     function(e) {

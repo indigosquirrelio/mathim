@@ -16,7 +16,8 @@ $(document).ready(function() {
   
   $('#composeTextarea').keyup(function(e) {
     updatePreview();
-  });
+  }).keyup();
+  
   
   if(!initialTextCleared) {
     setTimeout("$('#composeTextarea').focus().select();", 50);
