@@ -52,7 +52,10 @@ class ChatClientComet extends CometActor with Loggable {
     }
     case ChannelLog(log) => {
       logger.info("ChannelLog received")
-      partialUpdate(log.reverse.map(m => jsCall(m, true)).reduceLeft(_+_))
+      if(!log.isEmpty)
+        partialUpdate(log.reverse.map(m => jsCall(m, true)).reduceLeft(_+_))
+      else
+        Noop
     }
     case ChannelNicks(nicks) => {
       logger.info("ChannelNicks received")

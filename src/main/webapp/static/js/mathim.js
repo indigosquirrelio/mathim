@@ -74,10 +74,14 @@ function initializeTopButtons() {
   });
 }
 
-function initializeChatInput() { 
+function initializeChatInput() {
+  var initialTextCleared = false;
+  
   $('#composeTextarea').autoResize();
   
   $('#composeTextarea').keydown(function(e) {
+    initialTextCleared = true;
+      
     if(e.which == KeyEvent.DOM_VK_RETURN && !e.shiftKey) {
       if($('#composeTextarea').val() != "") {
         $('#composeSubmitBtn').click();
@@ -90,12 +94,57 @@ function initializeChatInput() {
     setTimeout("$('#composeTextarea').val('').focus();", 10);
   });
   
+  function updatePreview() {
+    $('#previewArea').html(mathFilter($('#composeTextarea').val()));
+  }
+  
   $('#composeTextarea').keyup(function(e) {
-    $('#previewArea').html(mathFilter($(this).val()));
+    updatePreview();
   }).keyup(); // trigger to move input text over
   
   //$('#composeTextarea').focus().select();
   setTimeout("$('#composeTextarea').focus().select();", 50);
+  
+  $('img.texbar').hover(
+    function(e) {
+      $(this).css('{ background-color: #f5f5f5; }');
+    },
+    function(e) {
+      $(this).css('{ background-color: #eeeeee; }');
+    }
+  ).click(
+    function(e) {
+      var textArea = $('#composeTextarea'); 
+      
+      if(!initialTextCleared) {
+        textArea.val("");
+        initialTextCleared = true;
+      }
+      
+      var nDols = $('#composeTextarea').val().split("$").length - 1;
+      
+      var inLatex = nDols % 2 == 1;
+      
+      var toAppendStr = "";
+      
+      if(!inLatex) {
+        var curStr = textArea.val();
+        // add a space if our last character is not a space
+        if(curStr != "" && curStr[curStr.length-1] != " ") {
+          toAppendStr += " ";
+        }
+        toAppendStr += "$";
+      }
+      toAppendStr += $(this).attr('title');
+      if(!inLatex) {
+        toAppendStr += "$";
+      }
+      
+      textArea.val(textArea.val() + toAppendStr);
+      textArea.focus();
+      updatePreview();
+    }
+  );
 }
 
 reDoubleDol = new RegExp('\\\$\\\$', 'mg');
@@ -132,3 +181,4 @@ function mathFilter(msg)
 
 	return newmsg;
 };
+

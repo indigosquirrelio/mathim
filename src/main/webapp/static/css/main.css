@@ -77,3 +77,11 @@ p.message {
   margin: 0;
   padding: 0;
 }
+
+img.texbar {
+  padding: 3px;
+  background-color: #eeeeee;
+  border:1px solid #cccccc;
+  border-top:1px solid #f0f0f0;
+  border-left:1px solid #f0f0f0;
+}
