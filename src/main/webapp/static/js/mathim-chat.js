@@ -75,9 +75,7 @@ function initializeTopButtons() {
 function initializeChatInput() {
   var initialTextCleared = false;
   
-  $('#composeTextarea').autoResize();
-  
-  $('#composeTextarea').keydown(function(e) {
+  $('#composeTextarea').keypress(function(e) {
     initialTextCleared = true;
     
     var DOM_VK_RETURN = 13;
@@ -104,6 +102,6 @@ function initializeChatInput() {
   
   //$('#composeTextarea').focus().select();
   setTimeout("$('#composeTextarea').focus().select();", 50);
-  initTexbar(true);
+  initTexbar(true, '#composeTextarea');
 }
 

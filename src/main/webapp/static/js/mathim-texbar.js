@@ -1,4 +1,4 @@
-function initTexbar(dollarSigns) {
+function initTexbar(dollarSigns, textareaSelector) {
   $('img.texbar').hover(
     function(e) {
       $(this).css('{ background-color: #f5f5f5; }');
@@ -8,9 +8,9 @@ function initTexbar(dollarSigns) {
     }
   ).click(
     function(e) {
-      var textArea = $('#composeTextarea');
+      var textArea = $(textareaSelector);
       
-      var nDols = $('#composeTextarea').val().split("$").length - 1;
+      var nDols = textArea.val().split("$").length - 1;
       
       var inLatex = nDols % 2 == 1;
       

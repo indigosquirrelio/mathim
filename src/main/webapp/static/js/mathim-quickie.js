@@ -6,8 +6,6 @@ $(document).ready(function() {
     $('#composeTextarea').val(decodeURI(location.hash.substr(1)));
   }
   
-  $('#composeTextarea').autoResize();
-  
   function updatePreview() {
     var input = $('#composeTextarea').val();
     $('#previewArea').html(texify(input));
@@ -23,5 +21,5 @@ $(document).ready(function() {
     setTimeout("$('#composeTextarea').focus().select();", 50);
   }
     
-  initTexbar(false);
+  initTexbar(false, '#composeTextarea');
 });

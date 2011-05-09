@@ -2,6 +2,20 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
+#lift__noticesContainer___notice {
+    background-color: green;
+}
+
+#lift__noticesContainer___warning {
+    background-color: yellow;
+}
+
+#lift__noticesContainer___error {
+    background-color: red;
+}
+
+a img { border: none; }
+
 .shadow {
 	-moz-box-shadow: 3px 3px 4px #000;
 	-webkit-box-shadow: 3px 3px 4px #000;
@@ -71,16 +85,15 @@ div.chatExpandScroll {
 }
 
 div.adWindow {
-  float: right;
+  position: absolute;
+  top: 150px;
+  right: 12px;
   width: 300px;
-  margin-top: 100px;
 }
 
 div.chatWindow {
-  margin-right: 310px;
+  margin-right: 320px;
   padding: 0.5em;
-  background-color: #dddddd;
-  border: 1px solid #666666;
 }
 
 div.equation {
@@ -88,6 +101,29 @@ div.equation {
   border-style: outset;
   text-align: center;
   padding: 1em;
+}
+
+div.greybox {
+  background-color: #cccccc;
+  border: 1px solid #666666;
+}
+
+div#mailCompose {
+  padding: 10px;
+  width: 408px;
+  height: 100%;
+}
+
+div#mailPreview {
+  background-color: #FFFFD9;
+  border: 1px solid #666666;
+  padding: 10px;
+  min-height: 300px;
+}
+
+textarea.mailTextBody {
+  height: 250px;
+  width: 400px;
 }
 
 #chatLog {
@@ -122,9 +158,8 @@ p.message {
 img.texbar {
   padding: 3px;
   margin: 0;
-  background-color: #eeeeee;
-  border:1px solid #cccccc;
-  border-top:1px solid #f0f0f0;
-  border-left:1px solid #f0f0f0;
+  background-color: #dddddd;
+  border:1px solid #444444;
+  cursor: hand;
 }
 

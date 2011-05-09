@@ -102,7 +102,6 @@ class ChatClientComet extends CometActor with Loggable {
   def renderCompose = OnLoad(SetHtml("chatInputCompose", 
     S.runTemplate("templates-hidden" :: "chatCompose" :: Nil, 
       "composetextarea" -> {
-        println("Bound one onSubmit")
         SHtml.onSubmit(msg => {
           logger.debug("Comet sent message " + msg)
           server ! ChatMessage(channelName, nickOpt.get, msg)
@@ -116,11 +115,9 @@ class ChatClientComet extends CometActor with Loggable {
   
   def renderAskName = OnLoad(SetHtml("chatInputAskName", nickOpt match {
     case Some(name) => <p>Nick registered</p>
-    case x => {
-      var nickChoice = "";
-      
-      def processForm() = {
-        server ! RequestNick(this, channelName, nickChoice)
+    case x => {      
+      def processNick(nick: String) = {
+        server ! RequestNick(this, channelName, nick)
         Noop
       }
       
@@ -128,8 +125,8 @@ class ChatClientComet extends CometActor with Loggable {
         <div>
           Choose a nickname
           <br/>
-          {text("", nickChoice = _, "class"->"askNameTextField")}
-          {ajaxSubmit("Join", processForm)} 
+          {text("", processNick, "class"->"askNameTextField")}
+          {ajaxSubmit("Join", () => Noop)} 
         </div>
       )
     }
