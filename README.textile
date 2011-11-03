@@ -1,8 +1,16 @@
 h1. mathim.com source code
 
+h2. License
+
 Licensed under AGPL 3. See LICENSE.txt for details.
+
+h2. Building
 
 Build with sbt 0.7.7 here:
 http://code.google.com/p/simple-build-tool/
 
 Note that this is the deprecated sbt rather than the new xsbt 0.10 series.
+
+h2. Contact
+
+See http://mathim.com for contact email.
