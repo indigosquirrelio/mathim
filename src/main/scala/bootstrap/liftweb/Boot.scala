@@ -40,6 +40,7 @@ class Boot {
     }
     
     LiftRules.statelessRewrite.prepend(rewrites)
+    LiftRules.stripComments.default.set(() => false) 
 
     // redirect all "/channelName/" to "/channelName"
     // redirect all 'real folders' i.e. 'mail' to 'mail/'    
@@ -66,8 +67,8 @@ class Boot {
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
     
     // use HTML5!
-    /*LiftRules.htmlProperties.default.set((r: Req) =>
-      new Html5Properties(r.userAgent))*/
+    LiftRules.htmlProperties.default.set((r: Req) =>
+      new Html5Properties(r.userAgent))
 
   }
 }
