@@ -66,8 +66,8 @@ class Boot {
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
     
     // use HTML5!
-    LiftRules.htmlProperties.default.set((r: Req) =>
-      new Html5Properties(r.userAgent))
+    /*LiftRules.htmlProperties.default.set((r: Req) =>
+      new Html5Properties(r.userAgent))*/
 
   }
 }
