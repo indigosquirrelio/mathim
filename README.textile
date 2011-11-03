@@ -1,5 +1,7 @@
 h1. mathim.com source code
 
+Licensed under AGPL 3. See LICENSE.txt for details.
+
 Build with sbt 0.7.7 here:
 http://code.google.com/p/simple-build-tool/
 
