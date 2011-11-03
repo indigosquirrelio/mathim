@@ -1,0 +1,6 @@
+h1. mathim.com source code
+
+Build with sbt 0.7.7 here:
+http://code.google.com/p/simple-build-tool/
+
+Note that this is the deprecated sbt rather than the new xsbt 0.10 series.
